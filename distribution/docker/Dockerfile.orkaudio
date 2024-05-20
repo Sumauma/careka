@@ -2,7 +2,7 @@
 # syntax=docker/dockerfile:experimental
 
 FROM ubuntu:focal as builder
-MAINTAINER Kinshuk B (hi@kinsh.uk)
+MAINTAINER Roberto Braga(roberto@sumaumatelecom.com.br)
 
 # Configure apt
 ENV DEBIAN_FRONTEND=noninteractive
@@ -64,7 +64,7 @@ RUN git clone --depth 1 --branch 3.0release https://github.com/ossrs/srs.git /op
 	&& make && ln -s /opt/srs-librtmp/objs/lib/srs_librtmp.a /opt/srs-librtmp/objs/lib/libsrs_librtmp.a 
 
 RUN mkdir -p /opt/oreka && chmod 777 /opt/oreka`
-	&& git clone --depth 1 https://github.com/voiceip/oreka.git /opt/oreka `
+	&& git clone --depth 1 https://github.com/Sumauma/careka.git /opt/oreka `
 	&& cd /opt/oreka/orkbasecxx `
 	&& autoreconf -i `
 	&& ./configure CXX=g++ `
@@ -78,7 +78,7 @@ RUN cd /opt/oreka/orkaudio `
 	&& make install
 
 FROM ubuntu:focal
-MAINTAINER Kinshuk B (hi@kinsh.uk)
+MAINTAINER Roberto Braga (roberto@sumaumatelecom.com.br)
 
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update && apt-get install -y libcap2 libpcap0.8 libsndfile1 libapr1 libspeex1 liblog4cxx10v5 libace-6.4.5 `
