@@ -43,8 +43,9 @@ Based on [OrecX](http://www.orecx.com/open-source/) [Oreka](https://github.com/O
 ```bash
 export DOCKER_BUILDKIT=1
 distribution/docker
-docker build -f Dockerfile.orkaudio -t voiceip/orkaudio .
-docker run -it --net=host --restart=always --privileged=true -v /var/log/orkaudio:/var/log/orkaudio  -v /etc/orkaudio:/etc/orkaudio voiceip/orkaudio:latest 
+docker build -f Dockerfile.orkaudio -t sumauma/orkaudio:latest .
+docker push sumauma/orkaudio:latest
+docker run -it --net=host --restart=always --privileged=true -v /var/log/orkaudio:/var/log/orkaudio  -v /etc/orkaudio:/etc/orkaudio sumauma/orkaudio:latest 
 ```
 
 #### Debian
@@ -59,7 +60,7 @@ You can natively build if you have all dependencies but I develop on a OSx syste
 Docker images are available via [docker hub](https://hub.docker.com/r/voiceip/orkaudio/tags), so just run the below command to pull images directly from hub.docker.com. Note: `--net=host` on docker works on linux systems and is a [limitation of docker](https://docs.docker.com/network/host/), so please keep that in mind.
 
 ```bash
-docker run -it --net=host --restart=always --privileged=true -v /var/log/orkaudio:/var/log/orkaudio -v /etc/orkaudio:/etc/orkaudio voiceip/orkaudio:latest
+docker run -it --net=host --restart=always --privileged=true -v /var/log/orkaudio:/var/log/orkaudio  -v /etc/orkaudio:/etc/orkaudio sumauma/orkaudio:latest 
 ```
 
 #### Debian/Ubuntu
